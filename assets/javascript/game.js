@@ -10,7 +10,7 @@ var targetNumber = "";
 var wins = 0;
 var losses = 0;
 var counter = 0;
-var images = ["../images/crystal1.jpg", "../images/crystal2.jpg", "../images/crystal3.jpg", "../images/crystal4.jpg"];
+var images = ["assets/images/crystal1.jpg", "assets/images/crystal2.jpg", "assets/images/crystal3.jpg", "assets/images/crystal4.jpg"];
 
 //Variable to create random number to guess.
   function randomTargetNumber () {
@@ -31,7 +31,7 @@ targetNumber = Math.floor(Math.random() * 102 ) + 19;
 //this function has a forloop calling  for the image array using .length
 //then the var crystal is created then jquery is used to creata a <img> tag
 //then the class "crystal" is created for the <img> tag
-//then a add attribute is used to create the src for the images, which is inside the images array.
+//then a add attribute is used to create the src for the images, which is declared in the images array.
 function resetCrystals () {
   for (var i =0; i < images.length; i++) {
     var crystal = $("<img>");

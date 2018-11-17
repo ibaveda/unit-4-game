@@ -10,7 +10,7 @@ var targetNumber = "";
 var wins = 0;
 var losses = 0;
 var counter = 0;
-var images = ["../images/crystal1.jpg", "../images/crystal2.jpg", "../images/crystal3.jpg", "../images/crystal4.jpg"];
+var images = ["assets/images/crystal1.jpg", "assets/images/crystal2.jpg", "assets/images/crystal3.jpg", "assets/images/crystal4.jpg"];
 
 //Variable to create random number to guess.
   function randomTargetNumber () {

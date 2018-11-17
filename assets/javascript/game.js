@@ -26,12 +26,15 @@ targetNumber = Math.floor(Math.random() * 102 ) + 19;
 
 
 
-//functions to make it work.
+//Functions to make it work.
 
-//this function has a forloop calling  for the image array using .length
+//The function resetCrystal has a forloop calling  for the image array using .length
 //then the var crystal is created then jquery is used to creata a <img> tag
 //then the class "crystal" is created for the <img> tag
-//then a add attribute is used to create the src for the images, which is declared in the images array.
+//then a attr(add attribute) is used to create the src for the images, which is declared in the images array.
+//then a attr is used to give the image a value with the math.floor(Math.random) formula, the value is in between 1 and 12
+//another attr is used to give a equal height style to all images
+//the last line is jquery "appending" the var crystal inside the class="crystal-images", which will hold the new <img> element created
 function resetCrystals () {
   for (var i =0; i < images.length; i++) {
     var crystal = $("<img>");
@@ -43,6 +46,11 @@ function resetCrystals () {
    }
 }
 
+//The function resetHTMl is used to:
+//it gives the "target-number" element the value of targetNumber which is inside the randoTargetNumber Function(the random number to guess that's displayed)
+//it gives the "win-lose-counter" element the value(property?) of ("<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>")
+//it gives the "score-number" element the value of counter, which in here is 0
+//it clears the "crystal-image" element, which has the images, of any value so it can start fresh
 function resetHTML () {
   $(".target-number").html(targetNumber);
   $(".win-lose-counter").html("<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>");
@@ -50,18 +58,26 @@ function resetHTML () {
   $(".crystal-images").empty(); 
 }
 
+//The function totalReset is used to:
+//runs the function randomTargetNumber again - new random number
+//sets the counter to 0
+//runs the function resetHTML - get the game to run again
+//runs the function resetCrystals which holds the images
 function totalReset () {
   randomTargetNumber ();
   counter = 0;
   resetHTML();
   resetCrystals();
 }
-
+//These 3 lines run inside the function above
 randomTargetNumber();
 resetHTML();
 resetCrystals();
 
 //Clicking Functions
+//Line 82 runs the counter up using an add(+=) then parsing the attr value to an interger if it's not already
+//Line 83 attaches the counter var to "score-number"
+//Line 84 is if or else runs either add to wins or add to losses, then the totalReset function runs for either. Then the game restarts
   function crystalClick () {
     counter += parseInt($(this).attr("value"));
     $(".score-number").html(counter);
@@ -74,5 +90,6 @@ resetCrystals();
       totalReset();
     };
   };
+  //the jquery .on attaches to the document(html) with the click event attaching to the class "crystal", then the crystalClick function is attached last
   $(document).on("click", ".crystal", crystalClick);
  
